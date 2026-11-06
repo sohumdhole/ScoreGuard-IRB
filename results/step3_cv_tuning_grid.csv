@@ -1,0 +1,5 @@
+config_name,n_estimators,learning_rate,num_leaves,max_depth,min_child_samples,reg_alpha,reg_lambda,dev_cv_oof_auroc,dev_cv_oof_gini,dev_cv_fold_std_auroc,dev_cv_oof_brier
+Grid_1_Shallow_Conservative,150,0.03,7,3,150,2.0,10.0,0.784573,0.569146,0.004632,0.133346
+Grid_2_Balanced_Monotone,250,0.03,15,4,100,1.0,5.0,0.786446,0.572892,0.004925,0.133033
+Grid_3_Moderate_Depth,300,0.03,31,5,80,1.0,5.0,0.78674,0.573481,0.00507,0.133033
+Grid_4_High_Shrinkage,400,0.02,15,4,120,1.5,8.0,0.786691,0.573381,0.004716,0.133004

@@ -1,0 +1,7 @@
+grade,score_band,implied_pd_band_min,implied_pd_band_max,dev_count,dev_share_pct,dev_defaults,dev_observed_default_rate,dev_mean_predicted_pd,holdout_count,holdout_share_pct,holdout_defaults,holdout_observed_default_rate,holdout_mean_predicted_pd
+G1 (Prime / Strong),"[565, +inf)",0.0,0.078766,2559,12.2136,145,0.056663,0.06806,1084,12.0713,82,0.075646,0.067805
+G2 (Satisfactory),"[535, 565)",0.078766,0.114726,5198,24.8091,467,0.089842,0.095744,2267,25.245,206,0.090869,0.095271
+G3 (Moderate Risk),"[500, 535)",0.114726,0.173913,6105,29.138,958,0.156921,0.142162,2606,29.02,430,0.165004,0.142165
+G4 (High Risk),"[460, 500)",0.173913,0.268229,1807,8.6245,424,0.234643,0.212815,814,9.0646,195,0.239558,0.21405
+G5 (Very High Risk),"[400, 460)",0.268229,0.457143,2356,11.2447,754,0.320034,0.36101,1011,11.2584,319,0.315529,0.360082
+G6 (Substandard),"(-inf, 400)",0.457143,1.0,2927,13.97,1894,0.647079,0.637908,1198,13.3408,757,0.631886,0.636695

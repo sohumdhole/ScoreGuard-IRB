@@ -1,0 +1,11 @@
+feature_or_score,index_type,n_bins,psi_or_csi_value,amber_threshold,red_threshold,status
+CHAMPION_SCORE (6 Master Grades G1-G6),Score PSI (Rating Grades),6,0.000607,0.1,0.25,GREEN (< 0.10: Stable)
+CHAMPION_SCORE (10 DEV Score Deciles),Score PSI (Score Deciles),10,0.001653,0.1,0.25,GREEN (< 0.10: Stable)
+CHALLENGER_EXPANDED_SCORE (10 DEV Deciles),Score PSI (Challenger Deciles),10,0.001815,0.1,0.25,GREEN (< 0.10: Stable)
+PAY_0,Feature CSI (Champion WoE Bins),4,0.000155,0.1,0.25,GREEN (< 0.10: Stable)
+MONTHS_DELINQUENT_6M,Feature CSI (Champion WoE Bins),5,0.001677,0.1,0.25,GREEN (< 0.10: Stable)
+MONTHS_REVOLVING_6M,Feature CSI (Champion WoE Bins),3,0.000232,0.1,0.25,GREEN (< 0.10: Stable)
+MEAN_PAY_AMT_6M,Feature CSI (Champion WoE Bins),6,0.000569,0.1,0.25,GREEN (< 0.10: Stable)
+LIMIT_BAL,Feature CSI (Champion WoE Bins),6,0.001423,0.1,0.25,GREEN (< 0.10: Stable)
+MEAN_UTIL_RATIO_6M,Feature CSI (Champion WoE Bins),4,0.000794,0.1,0.25,GREEN (< 0.10: Stable)
+BILL_TREND_6M_RATIO,Feature CSI (Champion WoE Bins),4,9e-05,0.1,0.25,GREEN (< 0.10: Stable)

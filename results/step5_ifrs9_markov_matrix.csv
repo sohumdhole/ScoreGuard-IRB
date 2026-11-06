@@ -1,0 +1,10 @@
+sample_split,from_state_code,from_state_label,transition_count_total,count_to_state0_current,count_to_state1_30_89dpd,count_to_state2_90plus_dpd,prob_to_state0_current,prob_to_state1_30_89dpd,prob_to_state2_90plus_dpd,row_sum,absorbing_cum_default_12m,absorbing_cum_default_24m,absorbing_cum_default_36m
+DEV,0,State 0: Current / 0 DPD (PAY_x <= 0 -> Stage 1),91888,86255,5633,0,0.938697,0.061303,0.0,1.0,0.093691,0.202111,0.297657
+DEV,1,"State 1: Delinquent 30-89 DPD (PAY_x in {1, 2} merged -> Stage 2)",11533,2908,7897,728,0.252146,0.684731,0.063123,1.0,0.249273,0.339718,0.418789
+DEV,2,State 2: Default / 90+ DPD (PAY_x >= 3 -> Stage 3),1339,141,483,715,0.105302,0.360717,0.533981,1.0,1.0,1.0,1.0
+HOLDOUT,0,State 0: Current / 0 DPD (PAY_x <= 0 -> Stage 1),39608,37189,2419,0,0.938926,0.061074,0.0,1.0,0.093062,0.200627,0.295524
+HOLDOUT,1,"State 1: Delinquent 30-89 DPD (PAY_x in {1, 2} merged -> Stage 2)",4759,1213,3245,301,0.254885,0.681866,0.063249,1.0,0.247942,0.337741,0.416363
+HOLDOUT,2,State 2: Default / 90+ DPD (PAY_x >= 3 -> Stage 3),533,59,196,278,0.110694,0.36773,0.521576,1.0,1.0,1.0,1.0
+ALL_SILVER_GOLD,0,State 0: Current / 0 DPD (PAY_x <= 0 -> Stage 1),131496,123444,8052,0,0.938766,0.061234,0.0,1.0,0.093504,0.201671,0.297025
+ALL_SILVER_GOLD,1,"State 1: Delinquent 30-89 DPD (PAY_x in {1, 2} merged -> Stage 2)",16292,4121,11142,1029,0.252946,0.683894,0.06316,1.0,0.248881,0.339135,0.418073
+ALL_SILVER_GOLD,2,State 2: Default / 90+ DPD (PAY_x >= 3 -> Stage 3),1872,200,679,993,0.106838,0.362714,0.530449,1.0,1.0,1.0,1.0

@@ -1,0 +1,4 @@
+model_name,feature_count,dev_eval_type,dev_auroc,dev_gini,dev_brier_label,dev_brier,holdout_auroc,holdout_gini,auroc_gap_vs_champion_holdout,gini_gap_vs_champion_holdout,holdout_brier_raw,holdout_brier_platt,holdout_brier_isotonic
+Champion: Monotonic WoE Logistic Scorecard (7 Features),7,DEV In-Sample (MLE),0.776123,0.552245,DEV In-Sample (MLE),0.135787,0.759844,0.519688,0.0,0.0,0.14025,0.14025,0.14025
+Challenger-Core: Monotone LightGBM (10 Features: Champion 7 w/ PAY_0_DPD + State Flags),10,DEV 5-Fold CV Out-of-Fold,0.786086,0.572171,DEV 5-Fold CV Out-of-Fold,0.133,0.770632,0.541264,0.010788,0.021576,0.137076,0.137015,0.137282
+Challenger-Expanded: Monotone LightGBM (19 Features: Clean DPD Lags + State Flags),19,DEV 5-Fold CV Out-of-Fold,0.78674,0.573481,DEV 5-Fold CV Out-of-Fold,0.133033,0.772998,0.545996,0.013154,0.026308,0.136865,0.136793,0.136964

@@ -1,0 +1,37 @@
+sample_split,scenario_id,scenario_name,pd_multiplier,rating_grade,grade_label,account_count,share_pct
+HOLDOUT,S0_BASELINE,Baseline (No Macro Shock),1.0,G1,G1 (Prime / Strong),1084,12.0713
+HOLDOUT,S0_BASELINE,Baseline (No Macro Shock),1.0,G2,G2 (Satisfactory),2267,25.245
+HOLDOUT,S0_BASELINE,Baseline (No Macro Shock),1.0,G3,G3 (Moderate Risk),2606,29.02
+HOLDOUT,S0_BASELINE,Baseline (No Macro Shock),1.0,G4,G4 (High Risk),814,9.0646
+HOLDOUT,S0_BASELINE,Baseline (No Macro Shock),1.0,G5,G5 (Very High Risk),1011,11.2584
+HOLDOUT,S0_BASELINE,Baseline (No Macro Shock),1.0,G6,G6 (Substandard),1198,13.3408
+HOLDOUT,S1_MILD_P90,Mild Adverse Stress (CSO LRM01 90th Percentile YoY),1.114105,G1,G1 (Prime / Strong),609,6.7817
+HOLDOUT,S1_MILD_P90,Mild Adverse Stress (CSO LRM01 90th Percentile YoY),1.114105,G2,G2 (Satisfactory),2160,24.0535
+HOLDOUT,S1_MILD_P90,Mild Adverse Stress (CSO LRM01 90th Percentile YoY),1.114105,G3,G3 (Moderate Risk),2527,28.1403
+HOLDOUT,S1_MILD_P90,Mild Adverse Stress (CSO LRM01 90th Percentile YoY),1.114105,G4,G4 (High Risk),1308,14.5657
+HOLDOUT,S1_MILD_P90,Mild Adverse Stress (CSO LRM01 90th Percentile YoY),1.114105,G5,G5 (Very High Risk),1035,11.5256
+HOLDOUT,S1_MILD_P90,Mild Adverse Stress (CSO LRM01 90th Percentile YoY),1.114105,G6,G6 (Substandard),1341,14.9332
+HOLDOUT,S2_SEVERE_MAX,Severe Crisis Stress (CSO LRM01 Historical Max YoY: 2009 May),1.476759,G1,G1 (Prime / Strong),89,0.9911
+HOLDOUT,S2_SEVERE_MAX,Severe Crisis Stress (CSO LRM01 Historical Max YoY: 2009 May),1.476759,G2,G2 (Satisfactory),937,10.4343
+HOLDOUT,S2_SEVERE_MAX,Severe Crisis Stress (CSO LRM01 Historical Max YoY: 2009 May),1.476759,G3,G3 (Moderate Risk),2530,28.1737
+HOLDOUT,S2_SEVERE_MAX,Severe Crisis Stress (CSO LRM01 Historical Max YoY: 2009 May),1.476759,G4,G4 (High Risk),2485,27.6726
+HOLDOUT,S2_SEVERE_MAX,Severe Crisis Stress (CSO LRM01 Historical Max YoY: 2009 May),1.476759,G5,G5 (Very High Risk),928,10.3341
+HOLDOUT,S2_SEVERE_MAX,Severe Crisis Stress (CSO LRM01 Historical Max YoY: 2009 May),1.476759,G6,G6 (Substandard),2011,22.3942
+ALL_SILVER_GOLD,S0_BASELINE,Baseline (No Macro Shock),1.0,G1,G1 (Prime / Strong),3643,12.1709
+ALL_SILVER_GOLD,S0_BASELINE,Baseline (No Macro Shock),1.0,G2,G2 (Satisfactory),7465,24.9399
+ALL_SILVER_GOLD,S0_BASELINE,Baseline (No Macro Shock),1.0,G3,G3 (Moderate Risk),8711,29.1026
+ALL_SILVER_GOLD,S0_BASELINE,Baseline (No Macro Shock),1.0,G4,G4 (High Risk),2621,8.7565
+ALL_SILVER_GOLD,S0_BASELINE,Baseline (No Macro Shock),1.0,G5,G5 (Very High Risk),3367,11.2488
+ALL_SILVER_GOLD,S0_BASELINE,Baseline (No Macro Shock),1.0,G6,G6 (Substandard),4125,13.7812
+ALL_SILVER_GOLD,S1_MILD_P90,Mild Adverse Stress (CSO LRM01 90th Percentile YoY),1.114105,G1,G1 (Prime / Strong),2027,6.772
+ALL_SILVER_GOLD,S1_MILD_P90,Mild Adverse Stress (CSO LRM01 90th Percentile YoY),1.114105,G2,G2 (Satisfactory),7067,23.6102
+ALL_SILVER_GOLD,S1_MILD_P90,Mild Adverse Stress (CSO LRM01 90th Percentile YoY),1.114105,G3,G3 (Moderate Risk),8548,28.5581
+ALL_SILVER_GOLD,S1_MILD_P90,Mild Adverse Stress (CSO LRM01 90th Percentile YoY),1.114105,G4,G4 (High Risk),4256,14.2189
+ALL_SILVER_GOLD,S1_MILD_P90,Mild Adverse Stress (CSO LRM01 90th Percentile YoY),1.114105,G5,G5 (Very High Risk),3398,11.3524
+ALL_SILVER_GOLD,S1_MILD_P90,Mild Adverse Stress (CSO LRM01 90th Percentile YoY),1.114105,G6,G6 (Substandard),4636,15.4884
+ALL_SILVER_GOLD,S2_SEVERE_MAX,Severe Crisis Stress (CSO LRM01 Historical Max YoY: 2009 May),1.476759,G1,G1 (Prime / Strong),272,0.9087
+ALL_SILVER_GOLD,S2_SEVERE_MAX,Severe Crisis Stress (CSO LRM01 Historical Max YoY: 2009 May),1.476759,G2,G2 (Satisfactory),3123,10.4336
+ALL_SILVER_GOLD,S2_SEVERE_MAX,Severe Crisis Stress (CSO LRM01 Historical Max YoY: 2009 May),1.476759,G3,G3 (Moderate Risk),8390,28.0302
+ALL_SILVER_GOLD,S2_SEVERE_MAX,Severe Crisis Stress (CSO LRM01 Historical Max YoY: 2009 May),1.476759,G4,G4 (High Risk),8334,27.8431
+ALL_SILVER_GOLD,S2_SEVERE_MAX,Severe Crisis Stress (CSO LRM01 Historical Max YoY: 2009 May),1.476759,G5,G5 (Very High Risk),3001,10.0261
+ALL_SILVER_GOLD,S2_SEVERE_MAX,Severe Crisis Stress (CSO LRM01 Historical Max YoY: 2009 May),1.476759,G6,G6 (Substandard),6812,22.7583

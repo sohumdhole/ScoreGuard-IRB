@@ -1,0 +1,239 @@
+{
+  "step": "Step 1 \u2014 Data Governance, DuckDB Medallion Layers, Pseudonymisation & Quarantine (Revised)",
+  "generated_at_utc": "2026-11-06T18:57:26.271361+00:00",
+  "pseudonymisation_policy": {
+    "algorithm": "Salted SHA-256 (SHA256(f'{SCOREGUARD_SALT}::{raw_id}'))",
+    "salt_source": "Environment variable SCOREGUARD_SALT only (no hard-coded default; fails if missing)",
+    "reversibility_governance_note": "Because raw IDs in UCI 350 are sequential integers (1..30,000), a known or committed salt would make hashes trivially reversible via brute-force over 30,000 integers. The salt must therefore be stored exclusively in an unversioned environment secret (.env in .gitignore), and in production must be paired with an HSM-managed secret key or random UUID tokenisation vault."
+  },
+  "uci_350_columns": [
+    "ID",
+    "LIMIT_BAL",
+    "SEX",
+    "EDUCATION",
+    "MARRIAGE",
+    "AGE",
+    "PAY_0",
+    "PAY_2",
+    "PAY_3",
+    "PAY_4",
+    "PAY_5",
+    "PAY_6",
+    "BILL_AMT1",
+    "BILL_AMT2",
+    "BILL_AMT3",
+    "BILL_AMT4",
+    "BILL_AMT5",
+    "BILL_AMT6",
+    "PAY_AMT1",
+    "PAY_AMT2",
+    "PAY_AMT3",
+    "PAY_AMT4",
+    "PAY_AMT5",
+    "PAY_AMT6",
+    "default payment next month"
+  ],
+  "cso_lrm01_columns": [
+    "STATISTIC",
+    "STATISTIC Label",
+    "TLIST(M1)",
+    "Month",
+    "C02076V02508",
+    "Age Group",
+    "C02199V02655",
+    "Sex",
+    "C02454V02972",
+    "Social Welfare Scheme",
+    "UNIT",
+    "VALUE"
+  ],
+  "duckdb_path": "data/duckdb/scoreguard.duckdb",
+  "table_row_counts": {
+    "bronze.credit_card_raw": 30000,
+    "bronze.cso_lrm01_raw": 32310,
+    "quarantine.credit_card_quarantine": 68,
+    "quarantine.dq_rule_summary": 10,
+    "silver.credit_card_cleansed": 29932,
+    "gold.credit_card_modelling": 29932
+  },
+  "bronze_default_rate": 0.2212,
+  "quarantine_default_rate": 0.073529,
+  "silver_default_rate": 0.221535,
+  "quarantine_breakdown_by_reason": {
+    "DQ08_UNDOCUMENTED_MARRIAGE_ZERO": 54,
+    "DQ07_UNDOCUMENTED_EDUCATION_ZERO": 14
+  },
+  "dq09_flag_and_retain_breakdown": {
+    "total_flagged_retained": 35,
+    "all_zero_inactive_unique_id_accounts": 30,
+    "active_bill_or_payment_accounts": 5,
+    "flagged_default_rate": 0.171429
+  },
+  "dq_rule_summary": [
+    {
+      "rule_id": "DQ01_MISSING_CRITICAL_FIELDS",
+      "description": "Null/NaN in ID, any of the 23 features, or default flag",
+      "governance_action": "HARD_QUARANTINE",
+      "flagged_rows": 0,
+      "pct_of_bronze": 0.0,
+      "flagged_default_rate": 0.0
+    },
+    {
+      "rule_id": "DQ02_DUPLICATE_PRIMARY_KEY",
+      "description": "Duplicate raw account ID",
+      "governance_action": "HARD_QUARANTINE",
+      "flagged_rows": 0,
+      "pct_of_bronze": 0.0,
+      "flagged_default_rate": 0.0
+    },
+    {
+      "rule_id": "DQ03_NON_POSITIVE_CREDIT_LIMIT",
+      "description": "Credit limit LIMIT_BAL <= 0",
+      "governance_action": "HARD_QUARANTINE",
+      "flagged_rows": 0,
+      "pct_of_bronze": 0.0,
+      "flagged_default_rate": 0.0
+    },
+    {
+      "rule_id": "DQ04_AGE_OUT_OF_BOUNDS",
+      "description": "Cardholder age < 18 or > 100",
+      "governance_action": "HARD_QUARANTINE",
+      "flagged_rows": 0,
+      "pct_of_bronze": 0.0,
+      "flagged_default_rate": 0.0
+    },
+    {
+      "rule_id": "DQ05_NEGATIVE_REPAYMENT_AMOUNT",
+      "description": "Negative repayment amount in any PAY_AMT1..PAY_AMT6",
+      "governance_action": "HARD_QUARANTINE",
+      "flagged_rows": 0,
+      "pct_of_bronze": 0.0,
+      "flagged_default_rate": 0.0
+    },
+    {
+      "rule_id": "DQ06_INVALID_SEX_OR_TARGET_DOMAIN",
+      "description": "SEX not in {1, 2} or target default flag not in {0, 1}",
+      "governance_action": "HARD_QUARANTINE",
+      "flagged_rows": 0,
+      "pct_of_bronze": 0.0,
+      "flagged_default_rate": 0.0
+    },
+    {
+      "rule_id": "DQ07_UNDOCUMENTED_EDUCATION_ZERO",
+      "description": "EDUCATION == 0 (unmapped/missing zero code outside UCI dictionary 1..4 and 5..6)",
+      "governance_action": "HARD_QUARANTINE",
+      "flagged_rows": 14,
+      "pct_of_bronze": 0.0467,
+      "flagged_default_rate": 0.0
+    },
+    {
+      "rule_id": "DQ08_UNDOCUMENTED_MARRIAGE_ZERO",
+      "description": "MARRIAGE == 0 (unmapped/missing zero code outside UCI dictionary 1..3)",
+      "governance_action": "HARD_QUARANTINE",
+      "flagged_rows": 54,
+      "pct_of_bronze": 0.18,
+      "flagged_default_rate": 0.092593
+    },
+    {
+      "rule_id": "DQ09_EXACT_FEATURE_TARGET_DUPLICATE",
+      "description": "Exact duplicate across 23 features + target (30/35 are all-zero inactive accounts with unique IDs; flagged & retained)",
+      "governance_action": "FLAG_AND_RETAIN",
+      "flagged_rows": 35,
+      "pct_of_bronze": 0.1167,
+      "flagged_default_rate": 0.171429
+    },
+    {
+      "rule_id": "DQ10_UNDOCUMENTED_CODE_MAPPING_NOTE",
+      "description": "Documented mapping note (not a DQ violation): EDUCATION in {5, 6} or PAY_0..6 in {-2, 0} (PAY=-1 is documented 'pay duly')",
+      "governance_action": "DOCUMENTED_MAPPING_NOTE",
+      "flagged_rows": 25956,
+      "pct_of_bronze": 86.52,
+      "flagged_default_rate": 0.200301
+    }
+  ],
+  "undocumented_code_treatment": {
+    "EDUCATION_raw_counts_in_bronze": {
+      "0": 14,
+      "1": 10585,
+      "2": 14030,
+      "3": 4917,
+      "4": 123,
+      "5": 280,
+      "6": 51
+    },
+    "EDUCATION_clean_counts_in_silver": {
+      "1": 10581,
+      "2": 14024,
+      "3": 4873,
+      "4": 454
+    },
+    "MARRIAGE_raw_counts_in_bronze": {
+      "0": 54,
+      "1": 13659,
+      "2": 15964,
+      "3": 323
+    },
+    "MARRIAGE_clean_counts_in_silver": {
+      "1": 13655,
+      "2": 15954,
+      "3": 323
+    },
+    "PAY_0_raw_counts_in_bronze": {
+      "-2": 2759,
+      "-1": 5686,
+      "0": 14737,
+      "1": 3688,
+      "2": 2667,
+      "3": 322,
+      "4": 76,
+      "5": 26,
+      "6": 11,
+      "7": 9,
+      "8": 19
+    },
+    "PAY_0_DPD_counts_in_silver": {
+      "0": 23129,
+      "1": 3678,
+      "2": 2663,
+      "3": 322,
+      "4": 76,
+      "5": 25,
+      "6": 11,
+      "7": 9,
+      "8": 19
+    },
+    "PAY_documented_vs_undocumented_note": {
+      "PAY_minus_1_documented_pay_duly_in_bronze_PAY_0": 5686,
+      "PAY_minus_2_undocumented_inactive_in_bronze_PAY_0": 2759,
+      "PAY_0_undocumented_revolving_in_bronze_PAY_0": 14737,
+      "accounts_with_any_undocumented_PAY_minus2_or_0_or_EDU_5_6_in_bronze": 25956,
+      "accounts_with_any_undocumented_PAY_minus2_or_0_or_EDU_5_6_in_silver": 25902
+    }
+  },
+  "gold_sample_splits": {
+    "DEV": {
+      "rows": 20952,
+      "defaults": 4642,
+      "default_rate": 0.221554
+    },
+    "HOLDOUT": {
+      "rows": 8980,
+      "defaults": 1989,
+      "default_rate": 0.221492
+    }
+  },
+  "sample_pseudonymised_ids": [
+    {
+      "raw_id": 1,
+      "account_id_hash": "cfac63eba04ccb3894f9af7baa5878d9080cbd775be9091fa25c1fd6a5303a90"
+    },
+    {
+      "raw_id": 2,
+      "account_id_hash": "4e41574e8acb02fe13f1d9cd77b2f3827462f327521115b13529f2754e2c676b"
+    },
+    {
+      "raw_id": 3,
+      "account_id_hash": "098d30d2af8322944625b785fa5aba4307f34d804a60744d4a842468f244241d"
+    }
+  ]
+}

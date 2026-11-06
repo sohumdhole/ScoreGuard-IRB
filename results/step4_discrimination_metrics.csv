@@ -1,0 +1,5 @@
+model,sample_split,evaluation_basis,n_accounts,n_defaults,observed_default_rate,mean_predicted_pd,auroc,gini,ks_statistic,ks_peak_score,ks_peak_pd,ks_cum_bad_capture_at_peak,ks_cum_good_capture_at_peak,brier_score,log_loss
+Champion (7F WoE Logistic Scorecard),DEV,DEV In-Sample (MLE),20952,4642,0.221554,0.221554,0.776123,0.552245,0.419458,481.11,0.214795,0.61676,0.197302,0.135787,0.433063
+Champion (7F WoE Logistic Scorecard),HOLDOUT,HOLDOUT Out-of-Sample,8980,1989,0.221492,0.218374,0.759844,0.519688,0.392953,482.4,0.211797,0.597788,0.204835,0.14025,0.44502
+Challenger-Expanded (19F Platt-Calibrated LGBM),DEV,DEV (Platt-Calibrated),20952,4642,0.221554,0.221507,0.798857,0.597714,0.458461,474.0,0.232163,0.650797,0.192336,0.130406,0.416268
+Challenger-Expanded (19F Platt-Calibrated LGBM),HOLDOUT,HOLDOUT Out-of-Sample,8980,1989,0.221492,0.218546,0.772998,0.545996,0.419081,468.0,0.246741,0.603318,0.184237,0.136793,0.435092

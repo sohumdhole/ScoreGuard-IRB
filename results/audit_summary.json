@@ -1,0 +1,227 @@
+{
+  "project": "ScoreGuard-IRB",
+  "generated_at_utc": "2026-11-06T23:36:45.769392+00:00",
+  "step_timestamps_utc": {
+    "step1": "2026-11-06T18:57:26.271361+00:00",
+    "step2": "2026-11-06T19:21:12.137664+00:00",
+    "step3": "2026-11-06T19:54:32.911283+00:00",
+    "step4": "2026-11-06T23:02:58.977820+00:00",
+    "step5": "2026-11-06T22:20:36.413215+00:00"
+  },
+  "data_sources": {
+    "uci_350": {
+      "name": "Default of Credit Card Clients (UCI Machine Learning Repository, ID 350)",
+      "citation": "Yeh, I-Cheng (2016). Default of Credit Card Clients. UCI Machine Learning Repository. https://doi.org/10.24432/C55S3H",
+      "licence": "CC BY 4.0",
+      "portfolio": "Taiwan, credit card accounts, repayment history April-September 2005",
+      "target": "default payment next month (one-month-ahead default event)"
+    },
+    "cso_lrm01": {
+      "name": "CSO Ireland LRM01, Persons on the Live Register",
+      "api": "https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/LRM01/CSV/1.0/en",
+      "licence": "CC BY 4.0",
+      "filter": {
+        "STATISTIC": "LRM01",
+        "Age Group": "All ages",
+        "Sex": "Both sexes",
+        "Social Welfare Scheme": "All live register schemes",
+        "total_months": 718,
+        "valid_yoy_months": 706
+      }
+    },
+    "raw_file_hashes": {
+      "cso_lrm01_raw.csv": {
+        "sha256": "cbc67c9c99f1b05663fd5808ee9d91d0b1e7a594142a413cc076ab2dd4ea6802",
+        "bytes": 4862030
+      },
+      "default of credit card clients.xls": {
+        "sha256": "30c6be3abd8dcfd3e6096c828bad8c2f011238620f5369220bd60cfc82700933",
+        "bytes": 5539328
+      },
+      "uci_credit_card_default_raw.csv": {
+        "sha256": "88bd2bd25327b52af2148b7437740aca427aaf8f0e52ad782ee8bbae44b509bd",
+        "bytes": 2897209
+      }
+    }
+  },
+  "row_counts": {
+    "bronze.credit_card_raw": 30000,
+    "bronze.cso_lrm01_raw": 32310,
+    "quarantine.credit_card_quarantine": 68,
+    "quarantine.dq_rule_summary": 10,
+    "silver.credit_card_cleansed": 29932,
+    "gold.credit_card_modelling": 29932,
+    "dev_rows": 20952,
+    "holdout_rows": 8980,
+    "dev_defaults": 4642,
+    "holdout_defaults": 1989
+  },
+  "key_metrics": {
+    "champion": {
+      "n_features": 7,
+      "max_vif": 3.194,
+      "dev_auroc": 0.776123,
+      "dev_gini": 0.552245,
+      "holdout_auroc": 0.759844,
+      "holdout_gini": 0.519688,
+      "holdout_ks": 0.392953,
+      "holdout_brier": 0.14025,
+      "hl_holdout_chi2": 25.4922,
+      "hl_holdout_p_df8": 0.00128231
+    },
+    "challenger_expanded_platt": {
+      "n_features": 19,
+      "dev_cv_auroc": 0.78674,
+      "holdout_auroc": 0.772998,
+      "holdout_gini": 0.545996,
+      "holdout_brier": 0.136793,
+      "hl_holdout_p_df8": 0.34469945,
+      "holdout_gini_gap_vs_champion": 0.026307999999999998,
+      "governance_trigger_gini_points": 5.0
+    },
+    "grade_backtest_holdout": {
+      "g1_observed_rate": 0.075646,
+      "g1_dev_empirical_pd": 0.056663,
+      "g1_one_sided_p_vs_dev_emp": 0.005593,
+      "g1_traffic_light_vs_dev_emp": "AMBER",
+      "g5_observed_rate": 0.315529,
+      "g5_mean_predicted_pd": 0.360082,
+      "g5_two_sided_p": 0.003176
+    },
+    "stability": {
+      "score_psi_grades": 0.000607,
+      "max_psi_or_csi": 0.001815,
+      "note": "Random stratified split, not out-of-time. Low PSI is expected and is not evidence of stability over time."
+    },
+    "fair_lending_holdout_champion": {
+      "min_disparate_impact_ratio": 0.9382,
+      "male_obs_minus_pred_bps": 113.01,
+      "male_two_sided_p": 0.112882,
+      "married_obs_minus_pred_bps": 190.5,
+      "married_two_sided_p": 0.003234,
+      "n_group_calibration_tests": 30
+    },
+    "capital_holdout_illustrative": {
+      "ead_ntd_m": 987.3638,
+      "rwa_ntd_m": 1761.2248,
+      "rwa_density": 1.7837648088779434,
+      "capital_8pct_ntd_m": 140.898,
+      "expected_loss_ntd_m": 155.98430000000002
+    },
+    "ifrs9_holdout_illustrative": {
+      "stage1_share_pct": 77.3274,
+      "stage2_share_pct": 21.1693,
+      "stage3_share_pct": 1.5033,
+      "allocated_ecl_ntd_m": 168.8545,
+      "coverage_pct": 17.1016,
+      "stage2_lifetime_uplift_ntd_m": 21.9353,
+      "markov_dev_current_to_90plus": 0.0
+    },
+    "stress_holdout_scenario_sensitivity": {
+      "mild_yoy_shock_pct": 22.821,
+      "severe_yoy_shock_pct": 95.3518,
+      "mild_pd_multiplier": 1.114105,
+      "severe_pd_multiplier": 1.476759,
+      "mild_rwa_uplift_pct": 2.82,
+      "severe_rwa_uplift_pct": 5.91,
+      "mild_ecl_sicr_uplift_pct": 12.26,
+      "severe_ecl_sicr_uplift_pct": 53.2,
+      "severe_downgraded_pct": 80.24
+    },
+    "baseline_mean_pd_definitions_holdout": {
+      "hold_mean_regulatory_grade_pd_with_moc": 0.230784,
+      "hold_mean_ifrs9_12m_pd_proxy_stage3_at_100pct": 0.235868,
+      "definitions": {
+        "mean_regulatory_grade_pd_with_moc": "Account-weighted mean of the grade-level regulatory PD proxy (DEV grade default rate + 95% Jeffreys MoC, floored at the CRR3 QRRE revolver floor of 0.10%). Every account, including Stage 3, carries its grade PD. Used for Basel capital and as the S0 baseline of the stress table.",
+        "mean_ifrs9_12m_pd_proxy": "Account-weighted mean of the IFRS 9 12-month PD proxy. Identical to the regulatory grade PD for Stage 1 and Stage 2 accounts, but Stage 3 (credit-impaired, PAY_0 >= 3) accounts are set to PD = 100%. Used in the IFRS 9 stage table. The difference between the two means is caused entirely by the Stage 3 override."
+      }
+    }
+  },
+  "assumptions": {
+    "target_horizon": "The UCI ID 350 target ('default payment next month') is a one-month-ahead default event (October 2005 outcome following the April–September 2005 observation window), NOT an empirical 12-month default horizon. Treating the scorecard's predicted probability and grade default rates as a 12-month PD proxy (1M-as-12M PD proxy) in the illustrative Basel IRB capital formula and IFRS 9 ECL calculations is an explicit methodological assumption and limitation.",
+    "asset_class": "Qualifying Revolving Retail Exposures (QRRE) — CRR Article 154(4) / CRR3 Article 163(1) / Basel IRB CRE30.55",
+    "asset_correlation_r": 0.04,
+    "pd_floor_applied": 0.001,
+    "lgd": 0.85,
+    "lgd_crr3_qrre_input_floor": 0.5,
+    "ccf": 0.5,
+    "eir_annual": 0.18,
+    "ifrs9_lifetime_horizon_months": 36,
+    "stress_elasticity_epsilon": 0.5,
+    "stress_sicr_overlay_rule": "A Stage 1 account moves to Stage 2 under stress if it is downgraded by at least one grade AND its post-stress grade is G4, G5 or G6.",
+    "approval_cutoff_for_fair_lending": "Approve G1-G4 (score >= 460, PD <= 26.82%)",
+    "grade_moc_method": "DEV 95% Jeffreys upper bound minus DEV grade default rate",
+    "points_scaling": {
+      "base_points": 600.0,
+      "base_odds_good_to_bad": "19:1",
+      "base_pd": 0.05,
+      "pdo": 50.0,
+      "factor": 72.134752,
+      "offset": 387.603624,
+      "logistic_intercept_b0": -1.249184,
+      "base_points_per_feature": 68.244741
+    }
+  },
+  "readme_metrics": {
+    "raw_rows": "30,000",
+    "quarantine_rows": "68",
+    "gold_rows": "29,932",
+    "dev_rows": "20,952",
+    "holdout_rows": "8,980",
+    "holdout_default_rate": "22.15%",
+    "lrm01_rows": "32,310",
+    "champion_features": "7",
+    "champion_max_vif": "3.19",
+    "champion_dev_auroc": "0.7761",
+    "champion_holdout_auroc": "0.7598",
+    "champion_holdout_gini": "0.5197",
+    "champion_holdout_ks": "0.3930",
+    "champion_holdout_brier": "0.1403",
+    "champion_hl_chi2": "25.49",
+    "champion_hl_p": "0.0013",
+    "challenger_features": "19",
+    "challenger_holdout_auroc": "0.7730",
+    "challenger_holdout_gini": "0.5460",
+    "challenger_holdout_brier": "0.1368",
+    "challenger_hl_p": "0.3447",
+    "gini_gap_points": "2.63",
+    "gini_trigger_points": "5.0",
+    "g1_observed_rate": "7.56%",
+    "g1_dev_pd": "5.67%",
+    "g1_p": "0.0056",
+    "g1_light": "AMBER",
+    "g5_observed_rate": "31.55%",
+    "g5_predicted_pd": "36.01%",
+    "g5_p": "0.0032",
+    "score_psi": "0.000607",
+    "min_dir": "0.9382",
+    "male_gap_bps": "+113.01",
+    "male_p": "0.1129",
+    "married_gap_bps": "+190.50",
+    "married_p": "0.0032",
+    "n_group_tests": "30",
+    "ead_m": "987.36",
+    "rwa_m": "1,761.22",
+    "rwa_density": "178.38%",
+    "capital_m": "140.90",
+    "el_m": "155.98",
+    "stage1_share": "77.33%",
+    "stage2_share": "21.17%",
+    "stage3_share": "1.50%",
+    "ecl_m": "168.85",
+    "ecl_coverage": "17.10%",
+    "stage2_uplift_m": "21.94",
+    "mild_shock": "22.82%",
+    "severe_shock": "95.35%",
+    "mild_rwa_uplift": "2.82%",
+    "severe_rwa_uplift": "5.91%",
+    "mild_ecl_uplift": "12.26%",
+    "severe_ecl_uplift": "53.20%",
+    "severe_downgraded": "80.24%",
+    "mean_reg_pd": "23.08%",
+    "mean_ifrs9_pd": "23.59%",
+    "lgd": "85%",
+    "pd_floor": "0.10%",
+    "ccf": "50%"
+  }
+}
